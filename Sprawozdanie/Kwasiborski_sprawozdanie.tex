@@ -1,0 +1,20 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym}
+\author{Andrzej Kwasiborski nr indeksu 271069}
+\title{Systemy wbudowane i czasu rzeczywistego \linebreak[1] Gra w życie}
+\frenchspacing
+\begin{document}
+\maketitle
+\tableofcontents
+\section{Funkcjonalność programu}
+Celem projektu było napisanie programu w języku C, który zasymuluje \textit{Grę w życie}, automat komórkowy wymyślony przez Johna Conway'a. Program miał się uruchamiać w środowisku QNX. \newline
+Program jest uruchamiany z poziomu konsoli. Następuje to po wpisaniu polecenia \textit{./life -s size -n number\_of\_iterations -f}, gdzie \textit{s} to rozmiar macierzy jaka ma zostać wygenerowana, \textit{n} to liczba generacji jaka ma być przeprowadzona, zaś \textit{f} określa czy program ma wyświetlać generacje jedna po drugiej z odstępami czasowymi czy wyświetlić od razu wszystko na raz. W przypadku brak flag program uruchomi się z wartościami domyślnymi. Gdy zaś zostanie uruchomiony z błędnie podanymi flagami, wyświetli komunikat informujący o tym jak należy prawidłowo używać programu.
+\section{Opis funkcji i algorytmów}
+Program zawiera w sobie 4 ważne funkcje i jedna poboczną. Są to \textit{main}, \textit{neighbours}, \textit{generate}, \textit{print\_board} oraz jako ostatnia \textit{get\_terminal\_size}. Funkcja \textit{main} odpowiada za sterowanie programem, wczytywanie danych, uruchamianie innych funkcji i kontakt z użytkownikiem. \textit{Neighbours} zgodnie z sąsiedztwem Moore'a zlicza ile sąsiadów ma konkretna komórka. \textit{Generate} zarządza kolejnymi generacjami. To tutaj decydowane jest, czy komórka przeżyje czy umrze po bieżącej generacji. \textit{Print\_board} odpowiada za wyświetlanie bieżącego stanu macierzy z komórkami. \textit{Get\_terminal\_size} jest natomiast funkcją wybitnie pomocniczą i wspomaga mechanizm uniemożliwiający wygenerowanie macierzy większej niż terminal jest w stanie wyświetlić bez konieczności załamywania linii.\newline
+Kod programu może wydawać się krótki, a jest tak ze względu na to, iż zastosowałem mechanizm \textit{\#define}, dzięki któremu byłem w stanie znacznie szybciej i wydajniej pisać kod. Zastąpiłem tak dwa bloki \textit{for}, utworzyłem zmienną \textit{CELL(x,y)}, oraz mini-funkcje \textit{SET\_LIVE}, \textit{SET\_DEAD}, oraz \textit{MIN(X,Y)}.\newline
+Po uruchomieniu program rozpoznaje z jakimi flagami został uruchomiony i dostosowuje swoje działanie do nich. Następnie zajmowana jest pamięć niezbędna na przeprowadzenie generacji. Kolejnym krokiem jest wygenerowanie planszy z komórkami. Stany komórek generowane są losowo. Po tym następuje proces n-iteracji, na który składa się wypisanie na standardowe wyjście początkowej planszy, macierzy z komórkami, oraz generacja kolejnego stanu komórek. Potem zwalniana jest zajęta pamięć i program kończy swoje działanie.  
+\section{Wnioski}
+Projekt był ciekawym, aczkolwiek delikatnie irytującym, powrotem do programowania w języku C, który nie jest preferowanym przeze mnie językiem. Niemniej jednak, główną trudnością okazało się spełnienie wymagać środowiska QNX, które nie miało kilku lubianych przeze mnie bibliotek. QNX wymagał również skrupulatności przy pisaniu kodu programu. Sama tematyka \textit{gry w życie} była już mi znajoma, lubię ją, więc nie miałem większych problemów z napisaniem programu. Projektowanie oprogramowania na system QNX wymaga nieco większej uwagi właśnie ze względu na potrzebę dokładnego przyjrzenia się kwestiom kompatybilności, lecz w gruncie rzeczy nie różni się bardzo od oprogramowania pisanego na maszyny używane przez nas na co dzień co czyni pracę z systemami QNX dostępną dla wielu programistów.
+\end{document}

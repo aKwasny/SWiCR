@@ -19,7 +19,7 @@
 
 
 const char *usage = "Usage: \n"
-        "./a.out -s size -n number_of_iterations -f\n"
+        "./life -s size -n number_of_iterations -f\n"
         "\tsize - here you can define the size of the board. Write 30 to generate a 30x30 board. Default value is 20.\n"
         "\tn - the number of iterations. By default it is set to 10. \n"
         "\tf - if you type it, all generations will occur right away.\n";
